@@ -53,21 +53,29 @@ namespace CodigoLinqAula
             DataClasses1DataContext dc = new DataClasses1DataContext();
             Funcionario func = new Funcionario();
             var pesquisa = from Funcionarios in dc.Funcionarios
-                           where Funcionarios.ID == 4
+                           where Funcionarios.Id == 4
                            select Funcionarios;
-            func = pesquisa.Single();
-            dc.Funcionarios.DeleteOnSubmit(func);
-            dc.SubmitChanges();
-            //Obtenção da listagem
-            var lista = from Funcionarios in dc.Funcionarios select Funcionarios;
-            foreach (Funcionario funcLista in lista)
+            try
             {
-                Console.WriteLine("ID: " + funcLista.ID);
-                Console.WriteLine("Nome: " + funcLista.Nome);
-                Console.WriteLine("Departamento: " + funcLista.Departamento);
-                Console.WriteLine();
+                func = pesquisa.Single();
+                func = pesquisa.Single();
+                dc.Funcionarios.DeleteOnSubmit(func);
+                dc.SubmitChanges();
+                //Obtenção da listagem
+                var lista = from Funcionarios in dc.Funcionarios select Funcionarios;
+                foreach (Funcionario funcLista in lista)
+                {
+                    Console.WriteLine("ID: " + funcLista.Id);
+                    Console.WriteLine("Nome: " + funcLista.Nome);
+                    Console.WriteLine("Departamento: " + funcLista.Departamento);
+                    Console.WriteLine();
+                }
+                Console.ReadLine();
+            } catch (Exception ex) {
+                Console.WriteLine("Não foi possivel obter o Funcionário com ID 4");
+                Console.ReadLine();
             }
-            Console.ReadLine();
+           
         }
 
         private static void Exemplo11()
@@ -75,7 +83,7 @@ namespace CodigoLinqAula
             DataClasses1DataContext dc = new DataClasses1DataContext();
             Funcionario func = new Funcionario();
             var pesquisa = from Funcionarios in dc.Funcionarios
-                           where Funcionarios.ID == 4
+                           where Funcionarios.Id == 5
                            select Funcionarios;
             func = pesquisa.Single();
             func.Departamento = "RH";
@@ -85,7 +93,7 @@ namespace CodigoLinqAula
                         select Funcionarios;
             foreach (Funcionario funcLista in lista)
             {
-                Console.WriteLine("ID: " + funcLista.ID);
+                Console.WriteLine("ID: " + funcLista.Id);
                 Console.WriteLine("Nome: " + funcLista.Nome);
                 Console.WriteLine("Departamento: " + funcLista.Departamento);
                 Console.WriteLine();
@@ -103,7 +111,7 @@ namespace CodigoLinqAula
             //Obtenção da listagem 
             var lista = from Funcionarios in dc.Funcionarios select Funcionarios; foreach (Funcionario funcLista in lista)
             {
-                Console.WriteLine("ID: " + funcLista.ID);
+                Console.WriteLine("ID: " + funcLista.Id);
                 Console.WriteLine("Nome: " + funcLista.Nome);
                 Console.WriteLine("Departamento: " + funcLista.Departamento); Console.WriteLine();
             }
@@ -118,13 +126,13 @@ namespace CodigoLinqAula
                         on Funcionarios.Departamento equals Departamentos.Sigla
                         select new
                         {
-                            Funcionarios.ID,
+                            Funcionarios.Id,
                             Funcionarios.Nome,
                             Departamentos.Departamento1
                         };
             foreach (var c in lista)
             {
-                Console.WriteLine("ID: " + c.ID);
+                Console.WriteLine("ID: " + c.Id);
                 Console.WriteLine("Nome: " + c.Nome);
                 Console.WriteLine("Departamento: " + c.Departamento1);
             }
@@ -174,7 +182,7 @@ namespace CodigoLinqAula
                         select Funcionarios;
             foreach (Funcionario func in lista)
             {
-                Console.WriteLine("ID: " + func.ID);
+                Console.WriteLine("ID: " + func.Id);
                 Console.WriteLine("Nome: " + func.Nome);
                 Console.WriteLine("Departamento: " + func.Departamento);
                 Console.WriteLine();
@@ -188,7 +196,7 @@ namespace CodigoLinqAula
             var lista = from Funcionarios in dc.Funcionarios where Funcionarios.Nome.StartsWith("Jo") select Funcionarios;
             foreach (Funcionario func in lista)
             {
-                Console.WriteLine("ID: " + func.ID);
+                Console.WriteLine("ID: " + func.Id);
                 Console.WriteLine("Nome: " + func.Nome);
                 Console.WriteLine("Departamento: " + func.Departamento);
                 Console.WriteLine();
@@ -202,7 +210,7 @@ namespace CodigoLinqAula
             var lista = from Funcionarios in dc.Funcionarios where Funcionarios.Departamento == "DF" select Funcionarios;
             foreach (Funcionario func in lista)
             {
-                Console.WriteLine("ID: " + func.ID);
+                Console.WriteLine("ID: " + func.Id);
                 Console.WriteLine("Nome: " + func.Nome);
                 Console.WriteLine("Departamento: " + func.Departamento);
                 Console.WriteLine();
@@ -224,7 +232,7 @@ namespace CodigoLinqAula
             var lista = from Funcionarios in dc.Funcionarios orderby Funcionarios.Nome select Funcionarios;
             foreach (Funcionario func in lista)
             {
-                Console.WriteLine("ID: " + func.ID);
+                Console.WriteLine("ID: " + func.Id);
                 Console.WriteLine("Nome: " + func.Nome);
                 Console.WriteLine("Departamento: " + func.Departamento);
                 Console.WriteLine();
@@ -238,7 +246,7 @@ namespace CodigoLinqAula
             var lista = from Funcionarios in dc.Funcionarios select Funcionarios;
             foreach (Funcionario func in lista)
             {
-                Console.WriteLine("ID: " + func.ID);
+                Console.WriteLine("ID: " + func.Id);
                 Console.WriteLine("Nome: " + func.Nome);
                 Console.WriteLine("Departamento: " + func.Departamento);
                 Console.WriteLine();

@@ -39,7 +39,7 @@ namespace CodigoLinqAula
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::CodigoLinqAula.Properties.Settings.Default.EmpresaConnectionString, mappingSource)
+				base(global::CodigoLinqAula.Properties.Settings.Default.EmpresaConnectionStringCasa, mappingSource)
 		{
 			OnCreated();
 		}
@@ -133,7 +133,7 @@ namespace CodigoLinqAula
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Departamento", Storage="_Departamento1", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Departamento", Storage="_Departamento1", DbType="VarChar(50)")]
 		public string Departamento1
 		{
 			get
@@ -205,7 +205,7 @@ namespace CodigoLinqAula
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID;
+		private int _Id;
 		
 		private string _Nome;
 		
@@ -217,8 +217,8 @@ namespace CodigoLinqAula
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
     partial void OnNomeChanging(string value);
     partial void OnNomeChanged();
     partial void OnDepartamentoChanging(string value);
@@ -231,22 +231,22 @@ namespace CodigoLinqAula
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._ID;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((this._Id != value))
 				{
-					this.OnIDChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
